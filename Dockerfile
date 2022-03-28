@@ -1,4 +1,4 @@
-FROM httpd:2.4-el8
+FROM rhel8/httpd-24
 
 ARG WEB_DAV_CONFIG=/etc/httpd/conf.d/webdav.conf
 ARG COS_MOUNT=/cos
