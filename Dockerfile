@@ -1,4 +1,4 @@
-FROM rhel8/httpd-24
+FROM registry.redhat.io/rhscl/httpd-24-rhel7
 
 ARG WEB_DAV_CONFIG=/etc/httpd/conf.d/webdav.conf
 ARG COS_MOUNT=/cos
