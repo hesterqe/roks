@@ -1,4 +1,4 @@
-FROM registry.redhat.io/rhel8/httpd-24
+FROM image-registry.openshift-image-registry.svc:5000/ibm-cos-plugin/roks@sha256:ae8c1217660dfc0abf74cc38c7420d063431fe6bfd5d9dbbb40d5baf3d4b5f79
 
 ARG WEB_DAV_CONFIG=/etc/httpd/conf.d/webdav.conf
 ARG COS_MOUNT=/cos
