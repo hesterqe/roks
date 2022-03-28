@@ -17,10 +17,10 @@ RUN mkdir -p /tmp/src && mkdir -p WEB_DAV_CONFIG && \
     echo "    Alias /cos $COS_MOUNT" >> $WEB_DAV_CONFIG && \
     echo "    <Directory $COS_MOUNT>" >> $WEB_DAV_CONFIG && \
     echo "        DAV On" >> $WEB_DAV_CONFIG && \
-    echo "        AuthType Basic" >> $WEB_DAV_CONFIG && \
-    echo "        AuthName webdav" >> $WEB_DAV_CONFIG && \
-    echo "        AuthUserFile $WEB_DAV_PASSWORD_FILE" >> $WEB_DAV_CONFIG && \
-    echo "        Require valid-user" >> $WEB_DAV_CONFIG && \
+    echo "        #AuthType Basic" >> $WEB_DAV_CONFIG && \
+    echo "        #AuthName webdav" >> $WEB_DAV_CONFIG && \
+    echo "        #AuthUserFile $WEB_DAV_PASSWORD_FILE" >> $WEB_DAV_CONFIG && \
+    echo "        #Require valid-user" >> $WEB_DAV_CONFIG && \
     echo "    </Directory>" >> $WEB_DAV_CONFIG && \
     echo "</VirtualHost>" >> $WEB_DAV_CONFIG && \    
     chown -R 1001:0 /tmp/src && \
@@ -35,9 +35,9 @@ RUN mkdir -p $COS_MOUNT && \
     echo "Hello World" >> $COS_MOUNT/test.html && \
     chmod -R 0755 $COS_MOUNT    
 # temporary as this should should be controlled via LDAP or AzureAD
-RUN htpasswd -bc /etc/httpd/.htpasswd dev abc123 && \
-    chmod -R 777 /etc/httpd/conf.d/ /etc/httpd/conf/
-#RUN chmod -R 777 /etc/httpd/conf.d/ /etc/httpd/conf/
+#RUN htpasswd -bc /etc/httpd/.htpasswd dev abc123 && \
+#    chmod -R 777 /etc/httpd/conf.d/ /etc/httpd/conf/
+RUN chmod -R 777 /etc/httpd/conf.d/ /etc/httpd/conf/
     
 USER 1001
 
