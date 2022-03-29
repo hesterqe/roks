@@ -29,15 +29,10 @@ RUN mkdir -p /tmp/src && mkdir -p WEB_DAV_CONFIG && \
 
 # Let the assemble script install the dependencies
 RUN /usr/libexec/s2i/assemble
-
-# temporary as this should be a pvc volume instead
-RUN mkdir -p $COS_MOUNT && \
-    echo "Hello World" >> $COS_MOUNT/test.html && \
-    chmod -R 0755 $COS_MOUNT    
+  
 # temporary as this should should be controlled via LDAP or AzureAD
 RUN /opt/rh/httpd24/root/usr/bin/htpasswd -bc /etc/httpd/.htpasswd dev abc123 && \
     chmod -R 777 /etc/httpd/conf.d/ /etc/httpd/conf/
-#RUN chmod -R 777 /etc/httpd/conf.d/ /etc/httpd/conf/
     
 USER 1001
 
